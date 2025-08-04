@@ -1,26 +1,33 @@
-import { usePopularMovies } from "../hooks/usePopularMovies";
+import { HomeCarousel } from "@/components/Home/Carousel/HomeCarousel";
+import { useTrendingMovies } from "@/hooks/useTrendingMovies";
 
 export default function Home() {
-  const {data, isLoading, isError, error} = usePopularMovies();
-  
+  const {
+    data: trendingData,
+    isLoading: isTrendingLoading,
+    isError: isTrendingError,
+    error: trendingError,
+  } = useTrendingMovies();
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center mb-8">Welcome to MovieSite</h1>
+    <div className="container p-0 bg-black">
+      <h1 className="text-3xl font-bold text-center mb-8">
+        Welcome to MovieSite
+      </h1>
       <p className="text-center text-gray-600 dark:text-gray-400">
         Your movie discovery platform
       </p>
-      {/* Loading State */}
-      {isLoading && <p className="text-center text-blue-500">Loading...</p>}
       
-      {isError && <p className="text-center text-red-500">Error: {error.message}</p>}
-      {/* Movie List */}
-      {!isLoading && !isError && data && (
-        <ul>
-          {data.results.map((movie: any) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
+      {/* Trending Carousel */}
+      {isTrendingLoading && (
+        <p className="text-center text-blue-500">Loading trending movies...</p>
       )}
+      {trendingData && !isTrendingError && (
+        <HomeCarousel
+          data={trendingData.results}
+        />
+      )}
+
     </div>
   );
 }
