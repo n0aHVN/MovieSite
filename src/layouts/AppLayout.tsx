@@ -5,7 +5,7 @@ export default function AppLayout() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Header />
-      <main className="flex-grow container mx-auto px-20">
+      <main className="flex-auto w-full h-full">
         <Outlet/>
       </main>
       <Footer />
