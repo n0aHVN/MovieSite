@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; // Changed from "react-router"
 import logoPath from "../../public/logo.png";
-import HeaderNavbar from "./Home/Navbar/HeaderNavbar";
+import HeaderNavbar from "./Navbar/HeaderNavbar";
 export default function Header() {
     return (
         <header className="bg-gray-900 text-white p-4">
