@@ -1,9 +1,10 @@
-import { fetchTrendingMovies } from "@/utils/fetchTrendingMovie";
+
 import { useQuery } from "@tanstack/react-query";
+import { fetchMovieDB } from "@/utils/fetchMovieDB";
 
 export function useTrendingMovies(){
-    return useQuery({
+    return useQuery<any>({
         queryKey: ['trending-movies'],
-        queryFn: fetchTrendingMovies
+        queryFn: () => fetchMovieDB("https://api.themoviedb.org/3/trending/movie/week")
     });
 }
