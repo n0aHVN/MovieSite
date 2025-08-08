@@ -2,8 +2,8 @@ import { BodyCarousel } from "@/components/Home/Carousel/BodyCarousel";
 import { useTrendingMovies } from "@/hooks/useTrendingMovies";
 import { BannerCarousel } from "@/components/Home/Banner/BannerCarousel";
 import { useTopRatedMovies } from "@/hooks/useTopRatedMovies";
-import { useTrendingTVShows } from "@/hooks/useTrendingTVShows";
-import { useTopRatedTVShows } from "@/hooks/useTopRatedTVShows";
+import { useTrendingTVSeries } from "@/hooks/useTrendingTVSeries";
+import { useTopRatedTVSeries } from "@/hooks/useTopRatedTVSeries";
 export default function Home() {
   const {
     data: trendingMoviesData,
@@ -20,18 +20,18 @@ export default function Home() {
   } = useTopRatedMovies();
 
   const {
-    data: trendingTVShowsData,
-    isLoading: isTrendingTVShowsLoading,
-    isError: isTrendingTVShowsError,
-    error: trendingTVShowsError,
-  } = useTrendingTVShows();
+    data: trendingTVSeriesData,
+    isLoading: isTrendingTVSeriesLoading,
+    isError: isTrendingTVSeriesError,
+    error: trendingTVSeriesError,
+  } = useTrendingTVSeries();
 
   const {
-    data: topRatedTVShowsData,
-    isLoading: isTopRatedTVShowsLoading,
-    isError: isTopRatedTVShowsError,
-    error: topRatedTVShowsError,
-  } = useTopRatedTVShows();
+    data: topRatedTVSeriesData,
+    isLoading: isTopRatedTVSeriesLoading,
+    isError: isTopRatedTVSeriesError,
+    error: topRatedTVSeriesError,
+  } = useTopRatedTVSeries();
   return (
     <>
       <div className="p-0 h-full mx-auto">
@@ -67,15 +67,15 @@ export default function Home() {
         )}
 
         {/* Trending TV */}
-        {isTrendingTVShowsLoading && (
+        {isTrendingTVSeriesLoading && (
           <p className="text-center text-blue-500">
             Loading trending TV shows...
           </p>
         )}
-        {trendingTVShowsData && !isTrendingTVShowsError && (
+        {trendingTVSeriesData && !isTrendingTVSeriesError && (
           <BodyCarousel
             carouselTitle="Trending TV Shows"
-            data={trendingTVShowsData.results}
+            data={trendingTVSeriesData.results}
           />
         )}
 
@@ -85,10 +85,10 @@ export default function Home() {
             Loading top rated TV shows...
           </p>
         )}
-        {topRatedTVShowsData && !isTopRatedTVShowsError && (
+        {topRatedTVSeriesData && !isTopRatedTVSeriesError && (
           <BodyCarousel
             carouselTitle="Top Rated TV Shows"
-            data={topRatedTVShowsData.results}
+            data={topRatedTVSeriesData.results}
           />
         )}
       </div>
