@@ -24,7 +24,7 @@ export default function BannerContent({ data }: BannerContentProps) {
         </div>
         
         {/* Right: Poster Card */}
-        <div className="flex-shrink-0">
+        <div className="flex shrink-0">
             <img
                 className="rounded-2xl shadow-2xl w-80 h-[30rem] object-cover "
                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}/>
