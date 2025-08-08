@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { fetchMovieDB } from "@/utils/fetchMovieDB";
 
