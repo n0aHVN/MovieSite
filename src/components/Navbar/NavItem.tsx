@@ -1,4 +1,4 @@
-import React, { useContext, type ReactNode } from "react";
+import { useContext, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { NavContext } from "./Navbar";
 
