@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { BodyCarouselItem } from "./BodyCarouselItem";
+import { MovieCard } from "@/components/shared/MovieCard";
 
 interface BodyCarouselProps {
   carouselTitle: string;
@@ -39,7 +39,7 @@ export function BodyCarousel({ carouselTitle, data }: BodyCarouselProps) {
       >
         {data.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <BodyCarouselItem data={item} />
+            <MovieCard data={item} />
           </SwiperSlide>
         ))}
       </Swiper>
