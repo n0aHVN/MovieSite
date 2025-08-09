@@ -1,6 +1,7 @@
+import type { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface MovieCard {
+interface MovieCard extends HTMLAttributes<HTMLDivElement> {
   data: any;
 }
 
