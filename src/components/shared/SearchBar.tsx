@@ -8,6 +8,7 @@ interface SearchBarProps {
   onDataChange: (data: any[]) => void;
   fallbackData: any[];
   useSearch: (query: string)=> ReturnType<typeof useSearchMovies| typeof useSearchTVSeries>;
+  setIsLoading: (loading: boolean) => void;
 }
 
 export default function SearchBar({
@@ -18,7 +19,8 @@ export default function SearchBar({
 }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(""); //This is used to trigger the search after a delay
-
+  // Use the debounced query to fetch data
+  const { data, isSuccess } = useSearch(debouncedQuery);
   /**
     "debouncedSetQuery" is a memoized version of the "debounce()" function,
     preventing it from being recreated on every render thanks to useCallback.
@@ -35,9 +37,6 @@ export default function SearchBar({
     debouncedSetQuery(query);
   }, [query, debouncedSetQuery]);
 
-  // Use the debounced query to fetch data
-  const { data, isSuccess } = useSearch(debouncedQuery);
-
   /*
     If the query is empty, we reset the display data to the fallback data.
     If the query is not empty and the data is successfully fetched,
@@ -49,7 +48,7 @@ export default function SearchBar({
     } else if (isSuccess && data?.results) {
       onDataChange(data.results);
     }
-  }, [query, data, isSuccess, fallbackData, onDataChange]);
+  }, [query]);
 
   return (
     <div>
